@@ -1,0 +1,22 @@
+
+
+<% content_for :title, "Posts" %>
+<div class = "container">
+  <h1 class = "page_title">Profile Posts</h1>
+
+  <%= button_to "New Post", new_post_path, method: :get, class: "btn_new" %>   
+
+  <div id="posts">
+    <% @posts.sort_by { |post| @featured_ids.include?(post.id) ? 0 : 1 }.each do |post| %>
+      <% next unless post.active? %>
+      <% if @featured_ids.include?(post.id) %>
+        <span class="featured">Featured</span>
+      <% else %>
+        <span class="not_featured">Not Featured</span>
+      <% end %>
+
+    <%= render post %>
+    <% end %>
+  </div>
+ 
+</div>

@@ -1,0 +1,98 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+.page_title{
+    text-align: center;
+}
+
+.post_title, .post_body {
+    outline-style: solid;
+    outline-width: 2px;
+    border-radius: 5px;
+}
+
+#content{
+    margin-left: 10px;
+}
+.post_title.h4{
+    margin-left: 5px;
+}
+.post_body{
+    margin-bottom: 20px;
+}
+.footer{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%; 
+}
+
+.date_created{
+    text-align: right;
+    margin-right: 10px;
+    color: seagreen;
+}
+hr{
+    margin: 0;
+}
+.actions{
+    display: flex;
+    gap: 10px;
+    margin:10px;
+}
+.btn_edit, .btn_delete, .btn_submit {
+    text-decoration: none;
+    color: seagreen;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.btn_edit:hover, .btn_delete:hover, .btn_submit:hover{
+    background-color: seagreen;
+    color: white;
+}
+
+.btn_new{
+    background-color: seagreen;
+    color: white;
+    border-radius: 5px;
+}
+
+.btn_new:hover {
+    color: seagreen;
+    background-color: white;
+}
+.featured{
+    color: seagreen;
+}
+
+.not_featured{
+    color: red;
+}
+
+.popup-notice {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #d4edda;
+  color: #155724;
+  padding: 12px 20px;
+  border: 1px solid #c3e6cb;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+  animation: fadeOut 5s forwards;
+}
+
+@keyframes fadeOut {
+  0%   { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; display: none; }
+}
