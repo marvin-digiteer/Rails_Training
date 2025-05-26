@@ -59,18 +59,19 @@ class Admin::PostsController < ApplicationController
   # DELETE /posts/1 or /posts/1.json
   def destroy
     @post.destroy!
-
     respond_to do |format|
-      format.html { redirect_to admin_posts_path, status: :see_other, notice: "Post was successfully destroyed." }
-      format.json { head :no_content }
+      format.turbo_stream # renders destroy.turbo_stream.erb
+      format.html { redirect_to admin_posts_path, notice: "Post was successfully deleted." }
     end
   end
   def toggle_featured
     @post = Post.find(params[:id])
     @post.update(featured: !@post.featured)
-    redirect_to admin_posts_path, notice: "Post featured status updated."
+    respond_to do |format|
+      format.turbo_stream # renders toggle_featured.turbo_stream.erb
+      format.html { redirect_to admin_posts_path, notice: "Post updated." }
+    end
   end
-
   def toggle_active
     @post.update(active: !@post.active)
     redirect_to admin_posts_path, notice: "Post active status updated."

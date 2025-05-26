@@ -1,0 +1,15 @@
+<turbo-stream action="replace" target="post_<%= @post.id %>">
+  <template>
+    <tr id="post_<%= @post.id %>">
+      <td><%= @post.title %></td>
+      <td><%= @post.customer.username %></td>
+      <td><%= @post.active? ? "Active" : "Inactive" %></td>
+      <td><%= @post.featured ? "Featured" : "Not Featured" %></td>
+      <td><%= @post.created_at.strftime("%B %d, %Y") %></td>
+      <td>
+        <%= button_to "Delete", admin_post_path(@post), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn_delete" %>
+        <%= button_to "Toggle Featured", toggle_featured_admin_post_path(@post), method: :patch, class: "btn_toggle_featured" %>
+      </td>
+    </tr>
+  </template>
+</turbo-stream>

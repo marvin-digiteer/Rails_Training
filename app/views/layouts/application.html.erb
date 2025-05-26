@@ -26,6 +26,8 @@
       crossorigin="anonymous"
     >
 
+
+
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
   </head>
 
@@ -57,8 +59,7 @@
       });
     </script>
 
-    <!-- Turbo (Hotwired) -->
-    <script src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.3.0/dist/turbo.min.js"></script>
+    <%= javascript_importmap_tags "application" %>
   
     <script src="https://cdn.jsdelivr.net/npm/@rails/ujs@6.1.4/lib/assets/compiled/rails-ujs.js"></script>
     <script>
