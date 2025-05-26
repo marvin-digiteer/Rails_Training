@@ -1,0 +1,14 @@
+<div class = "container">
+
+    <h1 class = "page_title">News Feed</h1>
+    
+     <div id="posts">
+        <% @posts.each do |post| %>
+         <% if post.active? %> 
+            <%= render partial: "customer/posts/post", locals: { post: post } %>
+          <% end %>
+        <% end %>
+    </div>
+    
+
+</div>

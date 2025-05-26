@@ -1,5 +1,7 @@
-class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy ]
+class Admin::PostsController < ApplicationController
+  before_action :authenticate_user!  # or your admin auth logic
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :toggle_featured, :toggle_active]
+
 
   # GET /posts or /posts.json
   def index
@@ -59,15 +61,24 @@ class PostsController < ApplicationController
     @post.destroy!
 
     respond_to do |format|
-      format.html { redirect_to posts_path, status: :see_other, notice: "Post was successfully destroyed." }
+      format.html { redirect_to admin_posts_path, status: :see_other, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
     end
   end
+  def toggle_featured
+    @post = Post.find(params[:id])
+    @post.update(featured: !@post.featured)
+    redirect_to admin_posts_path, notice: "Post featured status updated."
+  end
 
+  def toggle_active
+    @post.update(active: !@post.active)
+    redirect_to admin_posts_path, notice: "Post active status updated."
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params.expect(:id))
+      @post = Post.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

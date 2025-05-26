@@ -1,4 +1,8 @@
 <div class ="container">
     <h1 class = "page_title">Featured Posts</h1>
-    <%= render @posts %>
+    <% if customer_signed_in? %>
+        <%= render partial: "customer/posts/post", collection: @posts, as: :post %> 
+    <% elsif user_signed_in? %>
+        <%= render partial: "admin/posts/post", collection: @posts, as: :post %> 
+    <% end %>
 </div>

@@ -1,9 +1,21 @@
 Rails.application.routes.draw do
-  
-
   devise_for :users
-  resources :posts
-  get "/about", to: 'pages#about'
+  devise_for :customers
+
+  namespace :customer do
+    resources :posts
+  end
+
+  namespace :admin do
+    resources :posts do
+      member do
+        patch :toggle_featured
+        patch :toggle_active
+      end
+    end
+  end
+
+  get "/feed", to: 'pages#feed'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

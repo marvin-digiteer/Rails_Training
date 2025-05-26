@@ -1,0 +1,13 @@
+<div class = "container">
+  <% content_for :title, "New post" %>
+
+  <h1>New post</h1>
+
+  <%= render partial: "customer/posts/form", locals: { post: @post } %>
+
+  <br>
+
+  <div>
+    <%= link_to "Back to posts", customer_posts_path %>
+  </div>
+</div>

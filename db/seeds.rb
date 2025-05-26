@@ -9,19 +9,3 @@
 #   end
 # db/seeds.rb
 
-User.create!(
-  email: "admin@example.com",
-  password: "password",
-  password_confirmation: "password",
-  username: "admin",
-  role: "admin"
-)
-
-
-# Create customer account
-Customer.create!(
-  email: "user@example.com",
-  password: "password",
-  password_confirmation: "password",
-  username: "customer"
-)

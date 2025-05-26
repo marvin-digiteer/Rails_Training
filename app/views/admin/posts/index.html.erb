@@ -1,0 +1,36 @@
+<% content_for :title, "Posts Management" %>
+
+<div class="container">
+  <h1 class="page_title">Manage Posts</h1>
+
+  <table id="postsTable" class="display">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Customer</th>
+        <th>Active</th>
+        <th>Featured</th>
+        <th>Created At</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.customer.username %></td>
+          <td><%= post.active? ? "Active" : "Inactive" %></td>
+          <td><%= post.featured ? "Featured" : "Not Featured" %></td>
+          <td><%= post.created_at.strftime("%B %d, %Y") %></td>
+          <td>
+            <%= button_to "Delete", admin_post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn_delete" %>
+            <%= button_to "Toggle Featured", toggle_featured_admin_post_path(post), method: :patch, class: "btn_toggle_featured" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
+
+

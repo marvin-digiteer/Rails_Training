@@ -1,0 +1,17 @@
+
+
+<% content_for :title, "Posts" %>
+<div class = "container">
+  <h1 class = "page_title">Profile Posts</h1>
+
+  <%= button_to "New Post", new_customer_post_path, method: :get, class: "btn_new" %>   
+
+  <div id="posts">
+    <% @posts.each do |post| %>
+      <% if post.customer_id == current_customer.id %> 
+        <%= render post %> 
+      <% end %>
+    <% end %>
+  </div>
+ 
+</div>

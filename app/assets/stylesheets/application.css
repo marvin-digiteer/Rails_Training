@@ -47,14 +47,19 @@ hr{
     gap: 10px;
     margin:10px;
 }
-.btn_edit, .btn_delete, .btn_submit {
+.btn_edit, .btn_delete, .btn_submit, .btn_toggle_featured {
     text-decoration: none;
     color: seagreen;
     background-color: white;
     border-radius: 5px;
+    border:2px solid #808080;
 }
 
-.btn_edit:hover, .btn_delete:hover, .btn_submit:hover{
+.btn_edit{
+    padding-left: 6px;
+    padding-right: 6px;
+}
+.btn_edit:hover, .btn_delete:hover, .btn_submit:hover, .btn_toggle_featured:hover {
     background-color: seagreen;
     color: white;
 }
@@ -68,6 +73,9 @@ hr{
 .btn_new:hover {
     color: seagreen;
     background-color: white;
+}
+.btn_log{
+    text-decoration: none;
 }
 .featured{
     color: seagreen;

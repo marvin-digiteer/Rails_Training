@@ -1,4 +1,7 @@
 <div id="<%= dom_id post %>">
+  <div class="posted_by">
+    Posted by: <%= post.customer.username %>
+  </div> 
   <div class = "post_title">
     <h4 id = "content">
       <%= post.title %>
@@ -14,8 +17,10 @@
     <div class = "footer">
     
       <div class = "actions">    
-        <%= button_to "Edit", edit_post_path(post), method: :get, class: "btn_edit" %>
-        <%= button_to "Delete", post, method: :delete, class: "btn_delete" %>
+      <% if post.customer_id == current_customer.id %> 
+        <%= link_to "Edit", edit_customer_post_path(post), class: "btn_edit", role: "button" %>
+        <%= button_to "Delete", customer_post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn_delete" %>
+      <% end %>
       </div>
       
       <div class = "date_created">
